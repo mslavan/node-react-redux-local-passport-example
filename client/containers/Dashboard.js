@@ -42,22 +42,29 @@ class Dashboard extends Component {
     };
 
     this.axiosGetEmployes   = this.axiosGetEmployes.bind(this);
-    this.onLogout 		 	= this.onLogout.bind(this);
-    this.onAddClicked 	 	= this.onAddClicked.bind(this);
-    this.onChangeClicked 	= this.onChangeClicked.bind(this);
-    this.onDeleteClicked 	= this.onDeleteClicked.bind(this);
-    this.onRowSelection 	= this.onRowSelection.bind(this);
-    this.onRequestCancel 	= this.onRequestCancel.bind(this);
-    this.onRequestCreate 	= this.onRequestCreate.bind(this);
-    this.onRequestUpdate 	= this.onRequestUpdate.bind(this);
+    this.onLogout 		 	    = this.onLogout.bind(this);
+    this.onAddClicked 	 	  = this.onAddClicked.bind(this);
+    this.onChangeClicked 	  = this.onChangeClicked.bind(this);
+    this.onDeleteClicked 	  = this.onDeleteClicked.bind(this);
+    this.onRowSelection 	  = this.onRowSelection.bind(this);
+    this.onRequestCancel 	  = this.onRequestCancel.bind(this);
+    this.onRequestCreate 	  = this.onRequestCreate.bind(this);
+    this.onRequestUpdate 	  = this.onRequestUpdate.bind(this);
     this.onChangeModalText  = this.onChangeModalText.bind(this);
     this.onChangeModalDate  = this.onChangeModalDate.bind(this);
-    this.onPreviousPage 	= this.onPreviousPage.bind(this);
-    this.onNextPage 		= this.onNextPage.bind(this);
+    this.onPreviousPage 	  = this.onPreviousPage.bind(this);
+    this.onNextPage 		    = this.onNextPage.bind(this);
   }
 
   componentWillMount() {
-  	this.axiosGetEmployes()
+    const { history, profile } = this.props;
+    if (_.isEmpty(profile.user)) {
+        history.replace({ pathname: '/login' });
+    }
+  }
+
+  componentDidMount() {
+    this.axiosGetEmployes()
   }
 
   axiosGetEmployes() {
@@ -198,7 +205,6 @@ class Dashboard extends Component {
   	} = this.props.profile;
 
   	const isLogged = _.isEmpty(user) ? false : true;
-  	console.log(this.props)
 
     return (
       <div>
