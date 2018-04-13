@@ -1,0 +1,28 @@
+body {
+	margin: 0px;
+}
+
+a {
+	margin: 5px;
+}
+
+.error {
+	color: #690101;
+}
+
+.success {
+	color: #007b05;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+.margin-small {
+	margin: 10px;
+}
+
+.padding-middle {
+	padding: 15px;
+}
